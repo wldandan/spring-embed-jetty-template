@@ -1,4 +1,4 @@
-intelligent transportation e-ploice system
+e-ploice system
 =====================
 
 Setup
@@ -20,4 +20,4 @@ Running
 
     java -jar build/libs/gradle-executable-war.war
 
-Open http://localhost:8081/welcome in your browser.
+    Open http://localhost:8081/welcome in your browser.
