@@ -30,6 +30,7 @@ sourceSets.all {
 }
 
 war {
+    baseName = 'it-epolice'
     from {
         configurations.executableWar.collect {
             return it.isDirectory() ? it : zipTree(it)

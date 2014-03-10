@@ -18,6 +18,6 @@ Running
     
     or
 
-    java -jar build/libs/gradle-executable-war.war
+    java -jar build/libs/it-epolice.war
 
     Open http://localhost:8081/welcome in your browser.
