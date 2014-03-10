@@ -7,40 +7,39 @@ def springVersion = '3.2.3.RELEASE'
 def jettyVersion = '8.1.14.v20131031'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 configurations {
-	executableWar
+    executableWar
 }
 
 dependencies {
-	compile "org.springframework:spring-core:$springVersion",
-	        "org.springframework:spring-web:$springVersion",
-	        "org.springframework:spring-webmvc:$springVersion",
+    compile "org.springframework:spring-core:$springVersion",
+            "org.springframework:spring-web:$springVersion",
+            "org.springframework:spring-webmvc:$springVersion",
             'javax.servlet:javax.servlet-api:3.0.1',
             "org.eclipse.jetty.aggregate:jetty-all:$jettyVersion"
 
-
     executableWar "org.eclipse.jetty.aggregate:jetty-all:$jettyVersion"
-	executableWar "org.eclipse.jetty:jetty-jsp:$jettyVersion"
+    executableWar "org.eclipse.jetty:jetty-jsp:$jettyVersion"
 }
 
 sourceSets.all {
-	compileClasspath += configurations.executableWar
+    compileClasspath += configurations.executableWar
 }
 
 war {
-	from {
-		configurations.executableWar.collect {
-			return it.isDirectory() ? it : zipTree(it)
-		}
-	}
-	from "$buildDir/classes/main"
-	exclude('**/META-INF/*.SF', '**/META-INF/*.RSA', '**/META-INF/*.DSA')
-	manifest {
-		attributes 'Main-Class': 'com.it.epolice.app.EmbeddedServer'
-	}
+    from {
+        configurations.executableWar.collect {
+            return it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    from "$buildDir/classes/main"
+    exclude('**/META-INF/*.SF', '**/META-INF/*.RSA', '**/META-INF/*.DSA')
+    manifest {
+        attributes 'Main-Class': 'com.it.epolice.app.EmbeddedServer'
+    }
 }
 
 jettyRun {
@@ -49,10 +48,5 @@ jettyRun {
     scanIntervalSeconds = 1
     doFirst {
         System.setProperty("log4j.configuration", "file://" + project.file("src/com.it.epolice/resourceslog4j.properties/log4j.properties").absolutePath)
-    }
-}
-
-jettyStop {
-    doLast {
     }
 }
