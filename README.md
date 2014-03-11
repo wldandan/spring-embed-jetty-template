@@ -3,18 +3,18 @@ e-ploice system
 
 Setup
 -------
-    gradle idea
+    ./gradlew idea
 
 
 Build
 --------
 
-    gradle war
+    ./gradlew war
     
 
 Running
 -------
-    gradle jetyRun 
+    ./gradlew jetyRun 
     
     or
 
